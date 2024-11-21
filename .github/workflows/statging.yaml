@@ -47,8 +47,8 @@ jobs:
           host: ${{ secrets.CI_DEPLOY_SERVER }}
           key: ${{ secrets.CI_DEPLOY_PRIVATE_KEY }}
           username: root
-        script: |
-          ls
+          script: |
+            ls
   notification:
     runs-on: ubuntu-latest
     env:

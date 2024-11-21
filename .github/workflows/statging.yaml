@@ -42,13 +42,9 @@ jobs:
       # - name: Set deploy key
       #   run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
       - name: Deploy to Digital Ocean
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.CI_DEPLOY_SERVER }}
-          key: ${{ secrets.CI_DEPLOY_PRIVATE_KEY }}
-          username: root
-          script: |
-            ls
+        run: |
+          bash ./deploy/scripts/set_up_env.sh
+          bash ./deploy/scripts/deploy_to_staging.sh
   notification:
     runs-on: ubuntu-latest
     env:

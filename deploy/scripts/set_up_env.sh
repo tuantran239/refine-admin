@@ -14,5 +14,5 @@ cd ~/.ssh
 echo "$CI_DEPLOY_PRIVATE_KEY" > id_rsa
 chmod 600 ~/.ssh/id_rsa
 # eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+# ssh-add ~/.ssh/id_rsa
 cd ~

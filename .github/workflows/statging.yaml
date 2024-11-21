@@ -28,11 +28,10 @@ jobs:
   notification:
     runs-on: ubuntu-latest
     env:
-      BUILD_FAIL: ${{ (needs.build.result == 'failure' || needs.build.result == 'timed_out')
-
+      BUILD_FAIL: ${{ (needs.build.result == 'failure' || needs.build.result == 'timed_out') }}
     needs:
       - build
-    if: ${{ always() || (needs.build.result == 'failure' || needs.build.result == 'timed_out')
+    if: ${{ always() || (needs.build.result == 'failure' || needs.build.result == 'timed_out') }}
     steps:
       - name: Check version
         uses: actions/checkout@v4

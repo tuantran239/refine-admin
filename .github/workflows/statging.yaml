@@ -31,7 +31,7 @@ jobs:
     needs: build
     env:
       CI_DEPLOY_ENV_VARS: ${{ secrets.CI_DEPLOY_ENV_VARS }}
-      CI_DEPLOY_PRIVATE_KEY: private.pem
+      CI_DEPLOY_PRIVATE_KEY: secrets.CI_DEPLOY_PRIVATE_KEY
       CI_DEPLOY_SERVER: ${{ secrets.CI_DEPLOY_SERVER }}
       CI_REGISTRY_USER: ${{ vars.DOCKER_HUB_USERNAME }}
       CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_HUB_TOKEN }}
@@ -39,8 +39,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set deploy key
-        run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
+      # - name: Set deploy key
+      #   run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
       - name: Deploy to Digital Ocean
         run: |
           bash ./deploy/scripts/set_up_env.sh

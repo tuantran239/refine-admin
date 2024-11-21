@@ -26,6 +26,22 @@ jobs:
           push: true
           tags: travis99/refine-admin:latest
           file: ./Dockerfile
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CI_DEPLOY_ENV_VARS: ${{ secrets.CI_DEPLOY_ENV_VARS }}
+      CI_DEPLOY_PRIVATE_KEY: ${{ secrets.CI_DEPLOY_PRIVATE_KEY }}
+      CI_DEPLOY_SERVER: ${{ secrets.CI_DEPLOY_SERVER }}
+      CI_REGISTRY_USER: ${{ vars.DOCKER_HUB_USERNAME }}
+      CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_HUB_TOKEN }}
+      CI_DEPLOY_IMAGE: travis99/refine-admin:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to Digital Ocean
+        run: |
+          bash ./deploy/scripts/set_up_env.sh
+          bash ./deploy/scripts/deploy_to_staging.sh
   notification:
     runs-on: ubuntu-latest
     env:

@@ -1,0 +1,13 @@
+version: '3.9'
+
+name: refine-app
+
+services:
+  refine-app:
+    restart: unless-stopped
+    image: "${CI_DEPLOY_IMAGE}"
+    env_file: .env
+    ports:
+      - "5173:80"
+    tty: true
+    stdin_open: true

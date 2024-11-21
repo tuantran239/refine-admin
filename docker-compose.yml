@@ -1,0 +1,11 @@
+version: '3.9'
+
+name: refine-admin
+
+services:
+  refine-app:
+    image: travis99/refine-admin
+    build: .
+    env_file: .env
+    ports:
+      - "5173:80"

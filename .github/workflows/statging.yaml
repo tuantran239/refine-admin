@@ -22,8 +22,9 @@ jobs:
       - name: Build and push container image to registry
         uses: docker/build-push-action@v6
         with:
+          context: .
           push: true
-          tags: travis99/${{ github.repository }}:latest
+          tags: travis99/refine-admin:latest
           file: ./Dockerfile
   notification:
     runs-on: ubuntu-latest

@@ -31,7 +31,7 @@ jobs:
     needs: build
     env:
       CI_DEPLOY_ENV_VARS: ${{ secrets.CI_DEPLOY_ENV_VARS }}
-      CI_DEPLOY_PRIVATE_KEY: ${{ secrets.CI_DEPLOY_PRIVATE_KEY }}
+      CI_DEPLOY_PRIVATE_KEY: private.pem
       CI_DEPLOY_SERVER: ${{ secrets.CI_DEPLOY_SERVER }}
       CI_REGISTRY_USER: ${{ vars.DOCKER_HUB_USERNAME }}
       CI_REGISTRY_PASSWORD: ${{ secrets.DOCKER_HUB_TOKEN }}
@@ -39,11 +39,46 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # - name: Set deploy key
-      #   run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
+      - name: Set deploy key
+        run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
       - uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.CI_DEPLOY_PRIVATE_KEY }}
+          ssh-private-key:
+            "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"
       - name: Deploy to Digital Ocean
         run: |
           bash ./deploy/scripts/set_up_env.sh

@@ -43,7 +43,7 @@ jobs:
       #   run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
       - name: Deploy to Digital Ocean
         run: |
-          bash ./deploy/scripts/setup_deploy_env.sh
+          bash ./deploy/scripts/set_up_env.sh
           bash ./deploy/scripts/deploy_to_staging.sh
   notification:
     runs-on: ubuntu-latest

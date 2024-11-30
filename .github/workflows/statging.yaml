@@ -41,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set deploy key
-        run: echo "${{ secrets.CI_DEPLOY_PRIVATE_KEY }}" | tr -d '\r' > $CI_DEPLOY_PRIVATE_KEY
+        run: echo "${{ vars.CI_PRIVATE_KEY }}" | tr -d '\r' > $CI_PRIVATE_KEY
       - name: Print private key
         run: echo $CI_PRIVATE_KEY   
       - uses: webfactory/ssh-agent@v0.9.0

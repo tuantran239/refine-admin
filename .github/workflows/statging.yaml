@@ -40,13 +40,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set deploy key
-        run: echo "${{ vars.CI_PRIVATE_KEY }}" | tr -d '\r' > $CI_PRIVATE_KEY
-      - name: Print private key
-        run: echo $CI_PRIVATE_KEY   
+      # - name: Set deploy key
+      #   run: echo "${{ vars.CI_PRIVATE_KEY }}" | tr -d '\r' > $CI_PRIVATE_KEY
+      # - name: Print private key
+      #   run: echo $CI_PRIVATE_KEY   
       - uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: $CI_PRIVATE_KEY   
+          ssh-private-key: vars.CI_PRIVATE_KEY   
       - name: Deploy to Digital Ocean
         run: |
           bash ./deploy/scripts/set_up_env.sh
